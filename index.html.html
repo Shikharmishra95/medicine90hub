@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Medicine 90 Hub — Shuklaganj, Unnao 209861</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Medicine 90 Hub — Same-day medicine delivery (7 AM – 7 PM). Category discounts, search, cart, WhatsApp ordering, doctor suggestions." />
+  <style>
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .shadow-soft{box-shadow:0 1px 2px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.06)}
+    .scrollbar-thin::-webkit-scrollbar{height:6px;width:6px}
+    .scrollbar-thin::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px}
+    .pill{display:inline-block;font-size:10px;padding:2px 6px;border-radius:999px}
+    /* Mobile-first tweaks */
+    .container{max-width:1152px;margin-inline:auto}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="container px-3 sm:px-4 py-2.5 flex items-center justify-between">
+      <button id="navHome" class="flex items-center gap-2 active:scale-95">
+        <div class="w-9 h-9 rounded-lg bg-cyan-600 text-white font-bold grid place-items-center shadow">Rx</div>
+        <div class="font-bold text-base sm:text-lg">Medicine <span class="text-cyan-700">90</span> Hub</div>
+      </button>
+      <div class="hidden sm:flex items-center gap-2 text-xs sm:text-sm">
+        <span class="text-slate-500">Shuklaganj, Unnao</span>
+        <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700" id="storeStatus">Checking…</span>
+      </div>
+      <button id="cartFab" class="relative active:scale-95" aria-label="Cart">
+        <div class="w-10 h-10 rounded-full bg-cyan-600 text-white grid place-items-center shadow">🛒</div>
+        <span id="cartCountFab" class="absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full shadow">0</span>
+      </button>
+    </div>
+    <div id="timingBanner" class="bg-cyan-50 text-cyan-800 text-xs sm:text-sm px-3 sm:px-4 py-2 border-t border-cyan-100">
+      Same-day delivery 7 AM – 7 PM. Orders after 7 PM delivered next day morning.
+    </div>
+  </header>
+
+  <!-- Global bar (Wholesale removed) -->
+  <section class="bg-white border-b border-slate-200">
+    <div class="container px-3 sm:px-4 py-2.5 flex items-center gap-2 sm:gap-3 flex-wrap">
+      <button id="backTop" class="hidden text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      <span class="text-xs sm:text-sm text-slate-600">Pricing:</span>
+      <span class="px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-cyan-600 text-white shadow-sm">Retail Only</span>
+      <span class="text-xs sm:text-sm text-slate-500">Open 7 AM – 7 PM</span>
+      <div class="ml-auto flex items-center gap-2">
+        <label class="flex items-center gap-1.5 text-xs text-slate-600">
+          <input type="checkbox" id="applyCatDiscount" class="accent-cyan-600">
+          <span>Apply category discount in totals</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="container px-3 sm:px-4 py-4 sm:py-6">
+    <!-- Home -->
+    <section id="pageHome" class="space-y-4 sm:space-y-6">
+      <!-- Promo & Info -->
+      <div class="grid md:grid-cols-2 gap-3 sm:gap-6">
+        <div class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-soft">
+          <h1 class="text-xl sm:text-2xl font-bold mb-1.5">Fast, easy medicine delivery</h1>
+          <p class="text-slate-600 text-sm">Search by Name / Brand / Category / Formula. Add to cart and place order via WhatsApp.</p>
+          <ul class="mt-3 sm:mt-4 text-sm text-slate-700 space-y-1.5">
+            <li>Generic, General Patient, Monopoli, General and more categories</li>
+            <li>Category discount badges + Item discount badges</li>
+            <li>Sticky mini-cart • Mobile-first UI</li>
+            <li>Same-day 7 AM – 7 PM; after 7 PM next day</li>
+          </ul>
+          <div class="mt-4 flex gap-2 sm:gap-3">
+            <button data-nav="shop" class="px-4 py-2 rounded-lg bg-cyan-600 text-white font-semibold active:scale-95">Open Shop</button>
+            <button data-nav="request" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-800 font-semibold active:scale-95">Can’t find a medicine?</button>
+          </div>
+        </div>
+        <div class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-soft">
+          <h2 class="text-lg sm:text-xl font-bold mb-2.5">Delivery & Payment</h2>
+          <div class="grid grid-cols-2 gap-2.5 sm:gap-4 text-xs sm:text-sm">
+            <div class="p-3 rounded-lg bg-slate-50">
+              <div class="font-semibold">Timing</div>
+              <div class="text-slate-600">7 AM – 7 PM same-day; after 7 PM next day morning.</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50">
+              <div class="font-semibold">Charges</div>
+              <div class="text-slate-600">₹25 delivery fee; free above ₹499.</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50">
+              <div class="font-semibold">Payment</div>
+              <div class="text-slate-600">Pay on Delivery (UPI/Cash).</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50">
+              <div class="font-semibold">Note</div>
+              <div class="text-slate-600">Prescription-required items show Rx badge.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories with discount badges -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-soft p-3 sm:p-4">
+        <h3 class="text-base sm:text-lg font-bold mb-2.5">Categories</h3>
+        <div id="categoryBadges" class="flex flex-wrap gap-1.5 sm:gap-2"></div>
+      </div>
+
+      <!-- Popular picks -->
+      <div>
+        <h3 class="text-base sm:text-lg font-bold mb-2">Popular picks</h3>
+        <div id="popularList" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"></div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="pageShop" class="hidden space-y-3 sm:space-y-4">
+      <div class="flex items-center justify-between">
+        <button class="text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-soft p-3 sm:p-4">
+        <div class="flex flex-col md:flex-row gap-2 sm:gap-3 md:items-center">
+          <div class="flex-1 flex items-center gap-2">
+            <input id="searchBox" type="text" placeholder="Search by medicine / brand / category / formula" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm">
+            <button id="clearSearch" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 active:scale-95">Clear</button>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="categorySelect" class="px-3 py-2 rounded-lg border border-slate-300 text-sm"></select>
+            <select id="sortSelect" class="px-3 py-2 rounded-lg border border-slate-300 text-sm">
+              <option value="relevance">Sort: Relevance</option>
+              <option value="priceAsc">Price: Low to High</option>
+              <option value="priceDesc">Price: High to Low</option>
+              <option value="nameAsc">Name: A-Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="productList" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"></div>
+    </section>
+
+    <!-- Cart -->
+    <section id="pageCart" class="hidden space-y-3 sm:space-y-4">
+      <div class="flex items-center justify-between">
+        <button class="text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-3 sm:gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-soft p-3 sm:p-4">
+          <h2 class="text-lg sm:text-xl font-bold mb-2.5">Cart</h2>
+          <div id="cartItems" class="space-y-2.5"></div>
+        </div>
+        <aside class="bg-white rounded-2xl border border-slate-200 shadow-soft p-3 sm:p-4 h-fit">
+          <h3 class="text-base sm:text-lg font-bold mb-2.5">Delivery Address</h3>
+          <div class="space-y-2.5">
+            <textarea id="custAddress" rows="3" placeholder="Full delivery address (Shuklaganj, Unnao 209861)" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm"></textarea>
+            <input id="custPincode" placeholder="Pincode (e.g., 209861)" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm" inputmode="numeric" pattern="[0-9]*">
+            <select id="custSlot" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm">
+              <option>As soon as possible</option>
+              <option>7–10 AM</option>
+              <option>10 AM–1 PM</option>
+              <option>1–4 PM</option>
+              <option>4–7 PM</option>
+              <option>After 7 PM (deliver next day)</option>
+            </select>
+            <label class="flex items-center gap-2 text-xs text-slate-600">
+              <input type="checkbox" id="doctorReferred" class="accent-cyan-600">
+              <span>Doctor referred (add reference in order)</span>
+            </label>
+          </div>
+          <div class="my-3 border-t border-slate-200"></div>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between"><span>Subtotal</span><span id="sumSubtotal">₹0</span></div>
+            <div class="flex justify-between"><span>Category Discount</span><span id="sumCatDisc">-₹0</span></div>
+            <div class="flex justify-between"><span>Delivery</span><span id="sumDelivery">₹0</span></div>
+            <div class="flex justify-between"><span>Taxes</span><span id="sumTax">₹0</span></div>
+            <div class="flex justify-between font-bold text-slate-900"><span>Total</span><span id="sumTotal">₹0</span></div>
+          </div>
+          <button id="waBtn" class="mt-3 w-full px-4 py-2 rounded-lg bg-cyan-600 text-white font-semibold active:scale-95">Place order on WhatsApp</button>
+          <p class="mt-2 text-[11px] text-slate-600">Open 7 AM – 7 PM. Orders after 7 PM deliver next day morning. Prescription may be required for some items.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="pageDoctors" class="hidden space-y-3 sm:space-y-4">
+      <div class="flex items-center justify-between">
+        <button class="text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      </div>
+      <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-soft">
+        <h2 class="text-lg sm:text-xl font-bold mb-2.5">Doctors (Suggestions & Referrals)</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mb-3">Find specialty-wise doctors with availability and location. Send a WhatsApp referral request.</p>
+        <div id="doctorList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4"></div>
+      </div>
+    </section>
+
+    <!-- Owner -->
+    <section id="pageOwner" class="hidden space-y-3 sm:space-y-4">
+      <div class="flex items-center justify-between">
+        <button class="text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      </div>
+      <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-soft">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">M9</div>
+          <div>
+            <div class="font-bold text-lg">Medicine 90 Hub</div>
+            <div class="text-xs sm:text-sm text-slate-600">Regd. Chemist & Druggist (License No. XXXXX)</div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-3 mt-3 text-sm">
+          <div><span class="font-semibold">Owner:</span> <span id="ownerName">Your Name</span></div>
+          <div><span class="font-semibold">Phone:</span> <span id="ownerPhone">+91-9044016518</span></div>
+          <div><span class="font-semibold">Shop Address:</span> <span id="ownerAddr">Shuklaganj, Unnao 209861</span></div>
+        </div>
+        <div class="mt-2 text-[11px] text-slate-500">Open: 7 AM – 7 PM • Same-day delivery in local area.</div>
+      </div>
+    </section>
+
+    <!-- Request -->
+    <section id="pageRequest" class="hidden space-y-3 sm:space-y-4">
+      <div class="flex items-center justify-between">
+        <button class="text-xs px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-95" data-back>← Back</button>
+      </div>
+      <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-soft">
+        <h2 class="text-lg font-bold mb-1.5">Can’t find a medicine?</h2>
+        <p class="text-xs sm:text-sm text-slate-600">Type the medicine/brand/pack/qty below and send a WhatsApp request. We’ll confirm availability & price.</p>
+        <textarea id="reqText" rows="4" placeholder="Example: Dolo 650, strip of 15 x 2; ORS Lemon x 5; Crocin Pain Relief Spray x 1" class="w-full mt-2 px-3 py-2 rounded-lg border border-slate-300 text-sm"></textarea>
+        <div class="mt-3 flex items-center gap-2">
+          <button id="reqSend" class="px-4 py-2 rounded-lg bg-cyan-600 text-white font-semibold active:scale-95">Send WhatsApp request</button>
+          <span class="text-[11px] sm:text-xs text-slate-500">Chat opens directly.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom mini cart -->
+  <div id="miniCart" class="fixed left-3 right-3 bottom-3 sm:left-1/2 sm:-translate-x-1/2 sm:max-w-2xl mx-auto hidden">
+    <div class="bg-slate-900 text-white rounded-2xl px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2 sm:gap-3 shadow-xl">
+      <div class="text-xs sm:text-sm"><span id="mcItems">0</span> items • <span id="mcTotal">₹0</span></div>
+      <div class="flex items-center gap-2">
+        <button data-nav="cart" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm active:scale-95">View Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-8 sm:mt-10 border-t border-slate-200">
+    <div class="container px-3 sm:px-4 py-5 text-[11px] sm:text-xs text-slate-500 flex items-center justify-between">
+      <div>© <span id="year"></span> Medicine 90 Hub</div>
+      <div>Some medicines may require prescription. Follow label/dosage or consult a doctor.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ================== Config (Retail only) ==================
+    const Config = {
+      shopName: "Medicine 90 Hub",
+      phone: "919044016518", // WhatsApp (no '+')
+      delivery: { baseFee: 25, freeAbove: 499 },
+      hours: { open: 7, close: 19 }, // 7 AM – 7 PM
+      currency: "₹",
+      taxPercent: 0
+    };
+
+    // ================== Categories (with default discounts) ==================
+    const CATEGORY_INFO = {
+      "Generic": { discount: 30, color: "bg-indigo-100 text-indigo-800" },
+      "General Patient": { discount: 12, color: "bg-emerald-100 text-emerald-800" },
+      "Monopoli": { discount: 6, color: "bg-amber-100 text-amber-900" },
+      "General": { discount: 12, color: "bg-sky-100 text-sky-800" },
+      "Pain Relief": { discount: 12, color: "bg-slate-100 text-slate-800" },
+      "Cold & Flu": { discount: 12, color: "bg-slate-100 text-slate-800" },
+      "Digestive": { discount: 12, color: "bg-slate-100 text-slate-800" },
+      "Vitamins": { discount: 15, color: "bg-slate-100 text-slate-800" },
+      "Skin Care": { discount: 10, color: "bg-slate-100 text-slate-800" },
+      "Baby Care": { discount: 8, color: "bg-slate-100 text-slate-800" },
+      "First Aid": { discount: 10, color: "bg-slate-100 text-slate-800" },
+      "Devices": { discount: 8, color: "bg-slate-100 text-slate-800" }
+    };
+
+    // ================== Doctors (sample) ==================
+    const DOCTORS = [
+      { id:"GP01", name:"Dr. E. Gupta", specialty:"General Physician", availability:"Mon–Sat 9 AM – 12 PM", location:"Health Plus Clinic", note:"General illness, fever", waText:"GP referral request: Dr. E. Gupta" },
+      { id:"ENT01", name:"Dr. B. Verma", specialty:"ENT", availability:"Mon–Fri 5 PM – 8 PM", location:"City Clinic, Ring Road", note:"Cold, throat, ear issues", waText:"ENT referral request: Dr. B. Verma" },
+      { id:"PED01", name:"Dr. C. Singh", specialty:"Pediatrician", availability:"Daily 11 AM – 2 PM", location:"Kids Care, Civil Lines", note:"Child checkups, vaccinations", waText:"Pediatrician referral request: Dr. C. Singh" },
+      { id:"DERM01", name:"Dr. D. Jain", specialty:"Dermatologist", availability:"Tue–Sat 4 PM – 7 PM", location:"Skin Centre, MG Road", note:"Acne, rashes, hairfall", waText:"Dermatologist referral request: Dr. D. Jain" }
+    ];
+
+    // ================== Products (Retail pricing only) ==================
+    // priceR = retail MRP/price shown; off% applied if toggle enabled.
+    let PRODUCTS = [
+      // Generic
+      {id:"GEN-PCM650-G", name:"Paracetamol 650 (Generic)", brand:"Generic", pack:"Strip of 15", category:"Generic", formula:"Paracetamol 650 mg", uses:"Fever, pain", caution:"Liver disease caution", rx:false, priceR:45, off:30},
+      {id:"GEN-CET10-G", name:"Cetirizine 10 (Generic)", brand:"Generic", pack:"Strip of 10", category:"Generic", formula:"Cetirizine 10 mg", uses:"Allergy, running nose", caution:"Drowsiness possible", rx:false, priceR:20, off:30},
+      {id:"GEN-PANT40-G", name:"Pantoprazole 40 (Generic)", brand:"Generic", pack:"Strip of 10", category:"Generic", formula:"Pantoprazole 40 mg", uses:"Acidity, reflux", caution:"Consult if persistent", rx:false, priceR:45, off:30},
+      {id:"GEN-OMZ20-G", name:"Omeprazole 20 (Generic)", brand:"Generic", pack:"Strip of 15", category:"Generic", formula:"Omeprazole 20 mg", uses:"Acidity", caution:"Consult if pain persists", rx:false, priceR:38, off:30},
+      {id:"GEN-DOXY100-G", name:"Doxycycline 100 (Generic)", brand:"Generic", pack:"Strip of 10", category:"Generic", formula:"Doxycycline 100 mg", uses:"Bacterial infections", caution:"Take as directed", rx:true, priceR:65, off:30},
+
+      // General Patient
+      {id:"GP-DICGEL", name:"Diclofenac Gel 1%", brand:"Brand C", pack:"30 g", category:"General Patient", formula:"Diclofenac 1% gel", uses:"Muscle pain, sprain", caution:"Avoid broken skin", rx:false, priceR:85, off:12},
+      {id:"GP-STEAMCAP", name:"Steam Inhalation Capsule", brand:"MentholCamphor", pack:"Strip of 10", category:"General Patient", formula:"Menthol + Camphor + Eucalyptus", uses:"Cold, congestion", caution:"Avoid eyes", rx:false, priceR:55, off:12},
+      {id:"GP-NAFSPR", name:"Pain Relief Spray", brand:"Brand Z", pack:"50 g", category:"General Patient", formula:"Diclofenac + Linseed + Menthol", uses:"Local pain relief", caution:"External use", rx:false, priceR:170, off:12},
+
+      // Monopoli
+      {id:"MON-COF-A", name:"Cough Syrup Adult (Mono)", brand:"Monopoly X", pack:"100 ml", category:"Monopoli", formula:"Dextromethorphan + CPM + PE", uses:"Cough, cold", caution:"Drowsiness", rx:false, priceR:120, off:0},
+      {id:"MON-KETO-2", name:"Ketoconazole Shampoo 2% (Mono)", brand:"Monopoly Y", pack:"60 ml", category:"Monopoli", formula:"Ketoconazole 2%", uses:"Dandruff", caution:"Avoid eyes", rx:false, priceR:260, off:0},
+
+      // General
+      {id:"GENL-PARA650", name:"Paracetamol 650 (General)", brand:"Brand A", pack:"Strip of 15", category:"General", formula:"Paracetamol 650 mg", uses:"Fever, pain", caution:"Avoid overdose", rx:false, priceR:90, off:12},
+      {id:"GENL-IBU400", name:"Ibuprofen 400 (General)", brand:"Brand B", pack:"Strip of 10", category:"General", formula:"Ibuprofen 400 mg", uses:"Pain, inflammation", caution:"With food", rx:false, priceR:35, off:12},
+
+      // Pain Relief
+      {id:"PAIN-DOLO650", name:"Dolo 650", brand:"Micro Labs", pack:"Strip of 15", category:"Pain Relief", formula:"Paracetamol 650 mg", uses:"Fever, pain", caution:"No alcohol", rx:false, priceR:95, off:12},
+      {id:"PAIN-COMBI", name:"Combiflam", brand:"Sanofi", pack:"Strip of 20", category:"Pain Relief", formula:"Ibuprofen + Paracetamol", uses:"Pain relief", caution:"Acidity possible", rx:false, priceR:110, off:12},
+
+      // Cold & Flu
+      {id:"CF-VICKS500", name:"Vicks Action 500", brand:"P&G", pack:"Strip of 10", category:"Cold & Flu", formula:"PCM + PE + Caffeine", uses:"Cold, congestion", caution:"BP caution", rx:false, priceR:60, off:12},
+      {id:"CF-LC5", name:"Levocetirizine 5", brand:"Generic", pack:"Strip of 10", category:"Cold & Flu", formula:"Levocetirizine 5 mg", uses:"Allergy", caution:"Drowsiness possible", rx:false, priceR:28, off:12},
+
+      // Digestive
+      {id:"DIG-ORS", name:"ORS Powder", brand:"Generic", pack:"1 sachet", category:"Digestive", formula:"WHO-ORS formula", uses:"Dehydration", caution:"Mix in safe water", rx:false, priceR:20, off:12},
+      {id:"DIG-ENO-LEM", name:"ENO Lemon 5g x10", brand:"GSK", pack:"10 sachets", category:"Digestive", formula:"Sodium bicarb + Citric acid", uses:"Acidity", caution:"High sodium", rx:false, priceR:95, off:12},
+
+      // Vitamins
+      {id:"VIT-LIMCEE", name:"Limcee Vit C 500", brand:"J&J", pack:"Strip of 15", category:"Vitamins", formula:"Ascorbic acid 500 mg", uses:"Immunity support", caution:"Acidity", rx:false, priceR:55, off:15},
+      {id:"VIT-EVION400", name:"Evion 400", brand:"Merck", pack:"Strip of 10", category:"Vitamins", formula:"Vitamin E 400 mg", uses:"Skin/hair", caution:"Blood thinners caution", rx:false, priceR:35, off:15},
+
+      // Skin Care
+      {id:"SK-CLTO", name:"Clotrimazole Cream 1%", brand:"DermaCo", pack:"30 g", category:"Skin Care", formula:"Clotrimazole 1%", uses:"Fungal infections", caution:"External use", rx:false, priceR:95, off:10},
+      {id:"SK-KETO2", name:"Ketoconazole Shampoo 2%", brand:"DermaCo", pack:"60 ml", category:"Skin Care", formula:"Ketoconazole 2%", uses:"Dandruff", caution:"Avoid eyes", rx:false, priceR:250, off:10},
+
+      // Baby Care
+      {id:"BB-PARADRP", name:"Paracetamol Drops 100mg/ml", brand:"KidsCare", pack:"15 ml", category:"Baby Care", formula:"Paracetamol 100 mg/ml", uses:"Fever in kids", caution:"Dose by weight", rx:false, priceR:55, off:8},
+      {id:"BB-ZINCSYR", name:"Zinc Syrup 20mg/5ml", brand:"KidsCare", pack:"100 ml", category:"Baby Care", formula:"Zinc 20 mg/5 ml", uses:"Diarrhea adjuvant", caution:"As directed", rx:false, priceR:95, off:8},
+
+      // First Aid
+      {id:"FA-DETTOL250", name:"Dettol Antiseptic 250ml", brand:"Reckitt", pack:"250 ml", category:"First Aid", formula:"Chloroxylenol 4.8%", uses:"Disinfectant", caution:"Dilute for skin", rx:false, priceR:110, off:10},
+      {id:"FA-BANDAGE6", name:"Crepe Bandage 6 cm", brand:"SurgiCo", pack:"1 pc", category:"First Aid", formula:"Elastic support wrap", uses:"Sprain", caution:"Do not over-tighten", rx:false, priceR:65, off:10},
+
+      // Devices
+      {id:"DV-THERMO", name:"Digital Thermometer", brand:"MediTech", pack:"1 unit", category:"Devices", formula:"Digital probe", uses:"Fever check", caution:"Follow manual", rx:false, priceR:199, off:8},
+      {id:"DV-NEB", name:"Nebulizer Kit (Mask+Tube)", brand:"MediTech", pack:"1 set", category:"Devices", formula:"Adult/Child kit", uses:"Nebulization", caution:"Clean after use", rx:false, priceR:199, off:8}
+    ];
+
+    // ================== State (Retail only) ==================
+    const State = {
+      cart: JSON.parse(localStorage.getItem("m90_cart") || "[]"), // {id,name,pack,price,qty,category}
+      page: "home",
+      applyDiscounts: JSON.parse(localStorage.getItem("m90_applyDisc") || "false")
+    };
+    const saveCart = () => localStorage.setItem("m90_cart", JSON.stringify(State.cart));
+
+    // ================== Utils ==================
+    const Util = {
+      money(n){ return Config.currency + (n||0).toFixed(0); },
+      inStoreHours(){
+        const now = new Date();
+        const h = now.getHours();
+        return h >= Config.hours.open && h < Config.hours.close;
+      },
+      appliedDiscountPct(prod){
+        if(typeof prod.off==="number" && prod.off>0) return prod.off;
+        const cat = CATEGORY_INFO[prod.category];
+        return cat ? (cat.discount||0) : 0;
+      },
+      priceBase(prod){ return prod.priceR; },
+      priceAfterDiscount(prod){
+        const base = Util.priceBase(prod);
+        const pct = Util.appliedDiscountPct(prod);
+        return Math.max(0, Math.round(base*(1 - pct/100)));
+      },
+      displayPrice(prod){
+        return State.applyDiscounts ? Util.priceAfterDiscount(prod) : Util.priceBase(prod);
+      }
+    };
+
+    // ================== Cart ==================
+    const Cart = {
+      add(prod){
+        const idx=State.cart.findIndex(x=>x.id===prod.id);
+        const unit = Util.displayPrice(prod);
+        if(idx>=0) State.cart[idx].qty+=1;
+        else State.cart.push({ id:prod.id, name:prod.name, pack:prod.pack, price:unit, qty:1, category:prod.category });
+        saveCart(); UI.updateCartUI(); UI.showMiniCart();
+      },
+      refreshPrices(){
+        State.cart = State.cart.map(it=>{
+          const p = PRODUCTS.find(x=>x.id===it.id);
+          if(!p) return it;
+          const unit = Util.displayPrice(p);
+          return { ...it, price: unit };
+        });
+        saveCart();
+      },
+      update(id,qty){ qty=Math.max(1,qty); State.cart=State.cart.map(it=>it.id===id?{...it,qty}:it); saveCart(); UI.updateCartUI(); },
+      remove(id){ State.cart=State.cart.filter(it=>it.id!==id); saveCart(); UI.updateCartUI(); },
+      count(){ return State.cart.reduce((s,i)=>s+i.qty,0); },
+      subtotal(){ return State.cart.reduce((s,i)=>s+i.qty*i.price,0); },
+      deliveryCharge(totalAfterDisc){
+        if(totalAfterDisc===0 || totalAfterDisc>=Config.delivery.freeAbove) return 0;
+        return Config.delivery.baseFee;
+      },
+      totals(){
+        const sub=Cart.subtotal();
+        const del= Cart.deliveryCharge(sub);
+        const tax=Math.round(sub*(Config.taxPercent/100));
+        return { sub, catDisc:0, del, tax, total: sub+del+tax };
+      }
+    };
+
+    // ================== UI ==================
+    const UI = {
+      nav(to){
+        State.page=to;
+        document.querySelectorAll("section[id^='page']").forEach(s=>s.classList.add("hidden"));
+        document.getElementById("page"+to[0].toUpperCase()+to.slice(1)).classList.remove("hidden");
+        document.querySelectorAll("[data-back]").forEach(b=> b.classList.remove("hidden"));
+        if(to==="home") document.getElementById("backTop").classList.add("hidden");
+        if(to==="home") UI.renderHome();
+        if(to==="shop") UI.renderShop();
+        if(to==="cart") UI.renderCart();
+        if(to==="doctors") UI.renderDoctors();
+        if(to==="owner") UI.renderOwner();
+        if(to==="request") UI.renderRequest();
+      },
+      setStoreStatus(){
+        const open=Util.inStoreHours();
+        const el=document.getElementById("storeStatus");
+        if(el){
+          el.textContent=open?"Open":"Closed";
+          el.className="px-2 py-0.5 rounded-full text-xs "+(open?"bg-green-100 text-green-700":"bg-rose-100 text-rose-700");
+        }
+        const tb=document.getElementById("timingBanner");
+        tb.textContent=open
+          ? "Same-day delivery 7 AM – 7 PM. Order now for delivery today."
+          : "We are closed now. Orders placed will be delivered next day after 7 AM.";
+      },
+      updateCartUI(){
+        const c=Cart.count();
+        const cc=document.getElementById("cartCount"); if(cc) cc.textContent=c;
+        const ccf=document.getElementById("cartCountFab"); if(ccf) ccf.textContent=c;
+        document.getElementById("mcItems").textContent=c;
+        document.getElementById("mcTotal").textContent=Util.money(Cart.subtotal());
+        const {sub,del,tax,total}=Cart.totals();
+        const s1=document.getElementById("sumSubtotal"),
+              s2=document.getElementById("sumCatDisc"),
+              s3=document.getElementById("sumDelivery"),
+              s4=document.getElementById("sumTax"),
+              s5=document.getElementById("sumTotal");
+        if(s1) s1.textContent=Util.money(sub);
+        if(s2) s2.textContent="-₹0"; // discounts included in item price if toggle on
+        if(s3) s3.textContent=Util.money(del);
+        if(s4) s4.textContent=Util.money(tax);
+        if(s5) s5.textContent=Util.money(total);
+      },
+      showMiniCart(){
+        const mc=document.getElementById("miniCart");
+        mc.classList.remove("hidden");
+        clearTimeout(UI._mcTimer);
+        UI._mcTimer=setTimeout(()=>mc.classList.add("hidden"),2200);
+      },
+      // Home
+      renderHome(){
+        const cats = [...new Set(PRODUCTS.map(p=>p.category))].sort();
+        const catWrap = document.getElementById("categoryBadges");
+        catWrap.innerHTML = cats.map(cat=>{
+          const info=CATEGORY_INFO[cat]||{discount:0,color:"bg-slate-100 text-slate-800"};
+          const disc = info.discount>0 ? ` • ${info.discount}% OFF` : "";
+          return `<span class="px-2 py-1 rounded-md text-xs font-semibold ${info.color}">${cat}${disc}</span>`;
+        }).join("");
+        const popular=PRODUCTS.slice(0,8);
+        UI.mountProducts(document.getElementById("popularList"), popular);
+      },
+      // Shop
+      fillCategories(){
+        const cats=[...new Set(PRODUCTS.map(p=>p.category))].sort();
+        document.getElementById("categorySelect").innerHTML =
+          `<option value="all">All Categories</option>`+cats.map(c=>`<option>${c}</option>`).join("");
+      },
+      renderShop(){
+        UI.fillCategories();
+        const listEl=document.getElementById("productList");
+        const searchEl=document.getElementById("searchBox");
+        const catSel=document.getElementById("categorySelect");
+        const sortSel=document.getElementById("sortSelect");
+        function apply(){
+          const q=(searchEl.value||"").toLowerCase().trim();
+          const cat=catSel.value;
+          let items=PRODUCTS.filter(p=>{
+            const m=p.name.toLowerCase().includes(q)
+              ||(p.brand||"").toLowerCase().includes(q)
+              ||(p.category||"").toLowerCase().includes(q)
+              ||(p.formula||"").toLowerCase().includes(q);
+            const c=(cat==="all"||p.category===cat);
+            return m&&c;
+          });
+          const sort=sortSel.value;
+          if(sort==="priceAsc") items.sort((a,b)=>Util.priceBase(a)-Util.priceBase(b));
+          if(sort==="priceDesc") items.sort((a,b)=>Util.priceBase(b)-Util.priceBase(a));
+          if(sort==="nameAsc") items.sort((a,b)=>a.name.localeCompare(b.name));
+          UI.mountProducts(listEl,items);
+        }
+        searchEl.oninput=apply;
+        document.getElementById("clearSearch").onclick=()=>{ searchEl.value=""; apply(); };
+        catSel.onchange=apply;
+        sortSel.onchange=apply;
+        apply();
+      },
+      mountProducts(container, items){
+        container.innerHTML=items.map(p=>{
+          const base=Util.priceBase(p);
+          const discPct = Util.appliedDiscountPct(p);
+          const after = Util.priceAfterDiscount(p);
+          const showPrice = State.applyDiscounts ? after : base;
+          const itemBadge = (typeof p.off==="number" && p.off>0) ? `<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-rose-100 text-rose-800">-${p.off}%</span>` : "";
+          const catInfo = CATEGORY_INFO[p.category] || {discount:0,color:"bg-slate-100 text-slate-800"};
+          const catBadge = catInfo.discount>0 ? `<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">${p.category}: ${catInfo.discount}% OFF</span>` : `<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700">${p.category}</span>`;
+          return `
+          <div class="p-3 sm:p-4 bg-white rounded-2xl border border-slate-200 shadow-soft flex flex-col">
+            <div class="flex-1">
+              <div class="font-semibold text-sm sm:text-base">${p.name} ${p.rx?'<span class="text-[10px] ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">Rx</span>':''} ${itemBadge}</div>
+              <div class="text-[11px] sm:text-xs text-slate-500">${p.brand} • ${p.pack} ${catBadge}</div>
+              <div class="mt-2 text-[12px] sm:text-[13px] text-slate-700">
+                <div><span class="font-semibold">Formula:</span> ${p.formula||"-"}</div>
+                <div class="line-clamp-2"><span class="font-semibold">Use:</span> ${p.uses||"-"}</div>
+                <div class="text-[10px] sm:text-[11px] text-slate-500 line-clamp-2"><span class="font-semibold">Caution:</span> ${p.caution||"-"}</div>
+              </div>
+            </div>
+            <div class="mt-2 sm:mt-3 flex items-center justify-between">
+              <div class="font-bold text-slate-900 text-sm sm:text-base">${Util.money(showPrice)} ${discPct>0?`<span class="pill bg-green-50 text-green-700">save ${discPct}%</span>`:""}</div>
+              <div class="flex items-center gap-2">
+                <button class="px-3 py-1.5 rounded-lg bg-cyan-600/10 text-cyan-700 hover:bg-cyan-600/20 text-xs sm:text-sm font-semibold active:scale-95" data-add="${p.id}">Add</button>
+              </div>
+            </div>
+          </div>`;
+        }).join("");
+        container.querySelectorAll("[data-add]").forEach(btn=>{
+          btn.onclick=()=>{
+            const prod=PRODUCTS.find(x=>x.id===btn.dataset.add);
+            if(prod.rx){ alert("Note: This medicine may require a valid prescription (Rx)."); }
+            Cart.add(prod);
+          };
+        });
+      },
+      // Cart
+      renderCart(){
+        const el=document.getElementById("cartItems");
+        const items=State.cart;
+        if(items.length===0){
+          el.innerHTML=`<div class="p-3 sm:p-4 rounded-lg bg-slate-50 text-slate-600 text-sm">Your cart is empty.</div>`;
+          UI.updateCartUI(); return;
+        }
+        el.innerHTML=items.map(it=>`
+          <div class="p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <div class="font-semibold text-sm sm:text-base truncate">${it.name}</div>
+              <div class="text-[11px] text-slate-500">${it.pack} ${it.category?`• ${it.category}`:""}</div>
+              <div class="mt-1 text-sm font-semibold">${Util.money(it.price)}</div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button class="px-2 py-1 rounded bg-slate-100 active:scale-95" data-dec="${it.id}">-</button>
+              <span class="w-6 text-center text-sm">${it.qty}</span>
+              <button class="px-2 py-1 rounded bg-slate-100 active:scale-95" data-inc="${it.id}">+</button>
+              <button class="ml-1.5 px-2 py-1 rounded bg-rose-100 text-rose-800 active:scale-95" data-rem="${it.id}">Remove</button>
+            </div>
+          </div>
+        `).join("");
+        el.querySelectorAll("[data-inc]").forEach(b=> b.onclick=()=>{ const cur=State.cart.find(x=>x.id===b.dataset.inc); Cart.update(cur.id,cur.qty+1); UI.renderCart(); });
+        el.querySelectorAll("[data-dec]").forEach(b=> b.onclick=()=>{ const cur=State.cart.find(x=>x.id===b.dataset.dec); Cart.update(cur.id,Math.max(1,cur.qty-1)); UI.renderCart(); });
+        el.querySelectorAll("[data-rem]").forEach(b=> b.onclick=()=>{ Cart.remove(b.dataset.rem); UI.renderCart(); });
+        UI.updateCartUI();
+      },
+      renderDoctors(){
+        const wrap=document.getElementById("doctorList");
+        wrap.innerHTML=DOCTORS.map(d=>`
+          <div class="p-3 sm:p-4 bg-white rounded-2xl border border-slate-200 shadow-soft">
+            <div class="font-bold text-sm sm:text-base">${d.name}</div>
+            <div class="text-[11px] text-slate-600">${d.specialty}</div>
+            <div class="mt-1.5 text-sm"><span class="font-semibold">Availability:</span> ${d.availability}</div>
+            <div class="text-sm"><span class="font-semibold">Location:</span> ${d.location}</div>
+            <div class="text-[11px] text-slate-600 mt-1">${d.note}</div>
+            <button class="mt-2.5 px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs sm:text-sm active:scale-95" data-doc="${d.id}">WhatsApp Referral</button>
+          </div>
+        `).join("");
+        wrap.querySelectorAll("[data-doc]").forEach(btn=>{
+          btn.onclick=()=>{
+            const d=DOCTORS.find(x=>x.id===btn.dataset.doc);
+            const text = `Doctor Referral • ${Config.shopName}\n${d.waText}\nPlease share consultation fee & timing.`;
+            const url = `https://wa.me/${Config.phone}?text=${encodeURIComponent(text)}`;
+            window.open(url,"_blank");
+          };
+        });
+      },
+      renderOwner(){},
+      renderRequest(){}
+    };
+
+    // ================== WhatsApp builders ==================
+    function buildOrderWA(){
+      const {sub,del,tax,total}=Cart.totals();
+      const open=Util.inStoreHours();
+      const cartLines=State.cart.map(it=>`- ${it.name} (${it.pack}) x ${it.qty} = ${Config.currency}${(it.qty*it.price).toFixed(0)}`).join("\n");
+      const addr=(document.getElementById("custAddress").value||"").trim();
+      const pin=(document.getElementById("custPincode").value||"").trim();
+      const slot=document.getElementById("custSlot").value;
+      const docRef = document.getElementById("doctorReferred").checked ? "Yes (doctor referral applied)" : "No";
+      return [
+        `Order • ${Config.shopName}`,
+        `Store Status: ${open?"Open":"Closed"}`,
+        `Doctor Referred: ${docRef}`,
+        `---- Items ----`,
+        cartLines || "(empty)",
+        `Subtotal: ${Util.money(sub)}`,
+        `Delivery: ${Util.money(del)}`,
+        `Taxes: ${Util.money(tax)}`,
+        `Total: ${Util.money(total)}`,
+        `---- Delivery ----`,
+        `Address: ${addr}`,
+        `Pincode: ${pin}`,
+        `Preferred Slot: ${slot}`,
+        `Note: Orders after 7 PM deliver next day morning. Some items may require prescription.`
+      ].join("\n");
+    }
+    function buildRequestWA(){
+      const txt=(document.getElementById("reqText").value||"").trim();
+      return [
+        `Custom Medicine Request • ${Config.shopName}`,
+        txt ? `Request:\n${txt}` : "Request: (not provided)",
+        `Please confirm availability & price.`
+      ].join("\n");
+    }
+
+    // ================== Events ==================
+    function initEvents(){
+      // Navigation buttons (top)
+      document.getElementById("navHome").onclick=()=> UI.nav("home");
+      // Header nav (on larger screens)
+      document.querySelectorAll("[data-nav]").forEach(b=> b.onclick=(e)=>{ e.preventDefault(); UI.nav(b.dataset.nav); });
+      document.querySelectorAll("[data-back]").forEach(b=> b.onclick=()=> UI.nav("home"));
+      document.getElementById("cartFab").onclick=()=> UI.nav("cart");
+
+      // Apply category discount toggle (affects unit price)
+      const chk = document.getElementById("applyCatDiscount");
+      chk.checked = State.applyDiscounts;
+      chk.onchange = ()=>{
+        State.applyDiscounts = chk.checked;
+        localStorage.setItem("m90_applyDisc", JSON.stringify(State.applyDiscounts));
+        Cart.refreshPrices();
+        UI.updateCartUI();
+        if(State.page==="shop") UI.renderShop(); else UI.renderHome();
+      };
+
+      // WhatsApp order
+      document.getElementById("waBtn").onclick=()=>{
+        if(State.cart.length===0){ alert("Cart is empty."); return; }
+        const addr=document.getElementById("custAddress").value.trim();
+        const pin=document.getElementById("custPincode").value.trim();
+        if(!addr || !pin){ alert("Please fill delivery address and pincode."); return; }
+        const text=buildOrderWA();
+        const url=`https://wa.me/${Config.phone}?text=${encodeURIComponent(text)}`;
+        window.open(url,"_blank");
+      };
+
+      // WhatsApp request
+      document.getElementById("reqSend").onclick=()=>{
+        const text=buildRequestWA();
+        const url=`https://wa.me/${Config.phone}?text=${encodeURIComponent(text)}`;
+        window.open(url,"_blank");
+      };
+    }
+
+    // ================== Init ==================
+    function init(){
+      document.getElementById("year").textContent=new Date().getFullYear();
+      UI.setStoreStatus(); setInterval(UI.setStoreStatus, 60*1000);
+      UI.nav("home");
+      UI.updateCartUI();
+      initEvents();
+    }
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
